@@ -1,0 +1,15 @@
+{
+  "name": "wob-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "1ven <1ven.mironchik@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec babel-node -- ./src/index.js",
+    "build": "babel ./src --out-dir ./build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "nodemon": "^1.17.1"
+  }
+}
