@@ -1,0 +1,6 @@
+version: '3'
+services:
+  web:
+    command: "yarn run build && yarn serve"
+    ports:
+      - 80:3000

@@ -1,5 +1,13 @@
+# dependencies
 node_modules
+
+# production
 build
+
+# errors
 npm-debug.log
+yarn-error.log
+
+# misc
 .DS_Store
 .env*

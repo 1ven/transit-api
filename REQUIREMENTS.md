@@ -1,1 +1,0 @@
-- Should use es6
