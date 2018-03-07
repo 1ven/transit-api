@@ -5,4 +5,10 @@ services:
     volumes:
       - .:/var/www
     environment:
-      - DEPLOY_ENV
+      - PG_HOST=database
+      - PG_USER=postgres
+      - PG_DATABASE=postgres
+    depends_on:
+      - database
+  database:
+    image: "postgres:9.4"

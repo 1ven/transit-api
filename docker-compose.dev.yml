@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    command: "yarn start"
+    environment:
+      - NODE_ENV=development
+    ports:
+      - 8080:3000
+  database:
+    ports:
+      - 5432:5432

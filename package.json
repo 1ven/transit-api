@@ -5,9 +5,11 @@
   "author": "1ven <1ven.mironchik@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development ./scripts/env.sh nodemon --exec babel-node -- ./src/index.js",
-    "serve": "NODE_ENV=production ./scripts/env.sh node ./build",
-    "build": "babel ./src --out-dir ./build"
+    "start": "nodemon --exec babel-node -- ./src/index.js",
+    "serve": "node ./build",
+    "build": "babel ./src --out-dir ./build",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:make": "knex migrate:make"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -17,6 +19,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "koa": "^2.5.0"
+    "knex": "^0.14.4",
+    "koa": "^2.5.0",
+    "pg": "^7.4.1"
   }
 }
