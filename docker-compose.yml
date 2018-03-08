@@ -1,14 +1,15 @@
-version: '3'
+version: '3.4'
 services:
   web:
-    build: .
-    volumes:
-      - .:/var/www
+    build:
+      context: .
+      target: node_custom
     environment:
-      - PG_HOST=database
-      - PG_USER=postgres
-      - PG_DATABASE=postgres
+      - PG_HOST
+      - PG_USER
+      - PG_DATABASE
     depends_on:
       - database
+
   database:
-    image: "postgres:9.4"
+    image: postgres:9.4

@@ -1,7 +1,8 @@
-version: '3'
+version: '3.4'
 services:
   web:
     command: >
+      # Perhaps it will not be working in all machines.
       bash -c "yarn run build && yarn run serve"
     environment:
       - NODE_ENV=production
