@@ -1,3 +1,3 @@
 #!/bin/sh
-make run_migrations
+yarn run migrate:latest
 exec "$@"
