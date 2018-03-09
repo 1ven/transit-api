@@ -8,9 +8,10 @@
   <!-- - Investigate, how to pass environment variables -->
   <!-- - Investigate OS replacement for env.sh -->
 <!-- - Connect PG -->
-  - Investigate, how to connect to prod/stage DB locally via Docker
-  - Run migrations after bootstrapping PG
-- Investigate how to pass arguments through make command
+  <!-- - Investigate, how to connect to prod/stage DB locally via Docker -->
+  <!-- - Run migrations after bootstrapping PG -->
+<!-- - Investigate how to pass arguments through make command -->
 - Implement security recommendations from - https://expressjs.com/en/advanced/best-practice-security.html
 - Define API response structure. Inherit from GitHub?
   - Define errors structure as well
+- Implement model validations, koa error handling
