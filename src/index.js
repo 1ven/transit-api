@@ -1,14 +1,13 @@
 import "babel-polyfill";
-import { koa } from "core/lib";
-import db from "core/database";
+import * as http from "core/http";
+import * as database from "core/database";
+import signUp from "./models/user/sign-up";
 
-const app = koa.initServer();
+const app = http.initServer();
+const db = database.connection;
 
 app.use(async ctx => {
   ctx.body = "Hello World";
 });
 
-db
-  .select("*")
-  .from("users")
-  .then(x => console.log(x));
+signUp({ email: "test" }, db).catch(err => console.log(err.getContent()));
