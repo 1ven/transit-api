@@ -30,7 +30,7 @@ const checkEmailUniqueness = db => async email =>
   !(await db
     .select("id")
     .from("users")
-    .where("email", email))[0];
+    .where("email", email || null))[0];
 
 const createSchema = db =>
   yup.object().shape({
