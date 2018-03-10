@@ -1,1 +1,1 @@
-export { default as modelErrors } from "./modelErrors";
+export { default as boom } from "./boom";

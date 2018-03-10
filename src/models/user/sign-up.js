@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
+import Boom from "boom";
 import * as yup from "yup";
 import { pick } from "ramda";
-import * as errors from "core/models/errors";
 import * as validation from "core/models/validation";
 
 export default async (props, db) => {
@@ -20,7 +20,7 @@ export default async (props, db) => {
     return pick(["id", "email"], user);
   } catch (err) {
     if (err instanceof validation.ValidationError) {
-      throw new errors.InvalidRequest(err.getFields());
+      throw Boom.badRequest(null, err.getFields());
     }
     throw err;
   }
@@ -30,6 +30,9 @@ const checkEmailUniqueness = db => async email =>
   !(await db
     .select("id")
     .from("users")
+    /**
+     * Using `null` as knex will throw an error if email will be undefined.
+     */
     .where("email", email || null))[0];
 
 const createSchema = db =>

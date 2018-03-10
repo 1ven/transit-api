@@ -6,6 +6,6 @@ export default new Router({ prefix: "/users" })
     ctx.response.body = await model.signUp(ctx.request.body, ctx._.db);
   })
   .get("/", ctx => {
-    ctx.body = "get hello";
+    ctx.body = "user data";
   })
   .routes();

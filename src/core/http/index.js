@@ -5,7 +5,7 @@ import * as middlewares from "./middlewares";
 export const initServer = (routes, db) => {
   const app = new Koa();
 
-  app.use(middlewares.modelErrors);
+  app.use(middlewares.boom);
   app.use(bodyParser());
   app.use(routes);
 
