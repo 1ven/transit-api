@@ -11,6 +11,7 @@
   <!-- - Investigate, how to connect to prod/stage DB locally via Docker -->
   <!-- - Run migrations after bootstrapping PG -->
 <!-- - Investigate how to pass arguments through make command -->
+- Investigate, why node service sometimes is running before postgres when running container first time and therefore throwing ECONNREFUSED 172.18.0.2:5432 error. Use "wait for it". https://docs.docker.com/compose/startup-order/
 - Implement security recommendations from - https://expressjs.com/en/advanced/best-practice-security.html
 - Define API response structure. Inherit from GitHub?
   - Define errors structure as well

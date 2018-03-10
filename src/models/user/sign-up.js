@@ -7,6 +7,7 @@ import * as validation from "core/models/validation";
 export default async (props, db) => {
   try {
     const { email, password } = await validation.validate(props, schema);
+    console.log(email, password);
     const hash = await bcrypt.hash(password, 12);
     const user = (await db
       .insert({ email, hash })
