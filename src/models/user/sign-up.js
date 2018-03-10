@@ -6,8 +6,11 @@ import * as validation from "core/models/validation";
 
 export default async (props, db) => {
   try {
-    const { email, password } = await validation.validate(props, schema);
-    console.log(email, password);
+    const { email, password } = await validation.validate(
+      props,
+      createSchema(db)
+    );
+
     const hash = await bcrypt.hash(password, 12);
     const user = (await db
       .insert({ email, hash })
@@ -23,13 +26,25 @@ export default async (props, db) => {
   }
 };
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .required(),
-  password: yup
-    .string()
-    .min(10)
-    .required()
-});
+const checkEmailUniqueness = db => async email =>
+  !(await db
+    .select("id")
+    .from("users")
+    .where("email", email))[0];
+
+const createSchema = db =>
+  yup.object().shape({
+    email: yup
+      .string()
+      .email("Incorrect email format")
+      .test("unique-email", "Email already exists", checkEmailUniqueness(db))
+      .required("Email is required"),
+    password: yup
+      .string()
+      .min(8, "Password should be at least 8 digits")
+      .required("Password is required"),
+    confirmation: yup
+      .string()
+      .oneOf([yup.ref("password")], "Passwords are not matching")
+      .required("Password confirmation is required")
+  });
