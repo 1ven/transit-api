@@ -9,7 +9,8 @@
     "serve": "node ./build",
     "build": "babel ./src --out-dir ./build",
     "migrate:latest": "knex migrate:latest",
-    "migrate:make": "knex migrate:make"
+    "migrate:make": "knex migrate:make",
+    "migrate:rollback": "knex migrate:rollback"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -27,6 +28,8 @@
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
+    "koa-session": "^5.8.1",
+    "koa-session-knex-store": "^1.1.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.4.1",
