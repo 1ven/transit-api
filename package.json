@@ -23,18 +23,14 @@
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^1.0.3",
     "boom": "^7.2.0",
-    "keygrip": "^1.0.2",
     "knex": "^0.14.4",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-session": "^5.8.1",
     "koa-session-knex-store": "^1.1.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
     "pg": "^7.4.1",
     "ramda": "^0.25.0",
-    "uuid": "^3.2.1",
     "yup": "^0.24.1"
   }
 }

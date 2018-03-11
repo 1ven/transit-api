@@ -17,8 +17,8 @@
 <!-- - Implement authentication -->
   - Investigate, what it is Basic auth, Digest auth, do we need it instead of local auth?
 <!-- - Use boom errors instead of modelErrrors -->
-- Implement sessions
-  - Review koa-session library
+<!-- - Implement sessions -->
+  <!-- - Review koa-session library -->
 
 - Define API response structure. Inherit from GitHub?
   <!-- - Define errors structure as well -->
