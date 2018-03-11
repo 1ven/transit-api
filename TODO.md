@@ -15,10 +15,15 @@
 - Implement security recommendations from - https://expressjs.com/en/advanced/best-practice-security.html
   - Protect from XSS and other vulnerabilities
 <!-- - Implement authentication -->
+  - Investigate, what it is Basic auth, Digest auth, do we need it instead of local auth?
 <!-- - Use boom errors instead of modelErrrors -->
 - Implement sessions
+  - Review koa-session library
 
 - Define API response structure. Inherit from GitHub?
   <!-- - Define errors structure as well -->
 - Implement model validations
 - Implement koa error handling
+
+Bugs:
+- Getting 500 error when don't providing content-type on sign in
