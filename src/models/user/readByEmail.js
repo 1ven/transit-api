@@ -1,10 +1,10 @@
 import { pick } from "ramda";
 
 export default async (email, db) => {
-  const user = (await db
-    .select("*")
+  const user = await db
+    .first("*")
     .from("users")
-    .where({ email }))[0];
+    .where({ email });
 
   return pick(["id", "email"], user);
 };

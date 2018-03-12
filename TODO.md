@@ -19,11 +19,13 @@
 <!-- - Use boom errors instead of modelErrrors -->
 <!-- - Implement sessions -->
   <!-- - Review koa-session library -->
+- Implement password resetting
+- Integrate Swagger
 
 - Define API response structure. Inherit from GitHub?
   <!-- - Define errors structure as well -->
-- Implement model validations
-- Implement koa error handling
+<!-- - Implement model validations -->
+<!-- - Implement koa error handling -->
 
 Bugs:
 - Getting 500 error when don't providing content-type on sign in
