@@ -24,5 +24,5 @@ export default async (email, db) => {
    */
   console.log(token);
 
-  return token;
+  return;
 };

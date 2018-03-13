@@ -8,11 +8,14 @@ export default new Router({ prefix: "/users" })
     ctx.response.body = await model.signUp(ctx.request.body, ctx.db);
   })
   .post("/password-reset", async ctx => {
-    // TODO: investigate, how to handle email prop validation
     await model.makeResetToken(ctx.request.body.email, ctx.db);
     ctx.response.status = 202;
   })
-  // .post("/password-reset/confirmation")
+  .post("/password-reset/confirmation", async ctx => {
+    await model.resetPassword(ctx.request.body, ctx.db);
+    ctx.response.status = 200;
+    ctx.response.body = "Password has been changed successfully";
+  })
   .get("/", authenticated, async ctx => {
     ctx.response.body = await model.readById(ctx.session.userId, ctx.db);
   })

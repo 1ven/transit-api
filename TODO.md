@@ -19,11 +19,13 @@
 <!-- - Use boom errors instead of modelErrrors -->
 <!-- - Implement sessions -->
   <!-- - Review koa-session library -->
-- Implement password resetting
+<!-- - Implement password resetting -->
+  - Implement sending email
+- Move request body validations usage in controllers(middlewares). Define that code in models.
+- Investigate, where to put model utils
 - Integrate Swagger
   - Define public models in definitions.yml and return those data from models functions.
   - Use routes from swagger?
-- Move request body validations usage in controllers(middlewares). Define that code in models.
 - Refactor core
 
 - Define API response structure. Inherit from GitHub?
