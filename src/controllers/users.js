@@ -3,12 +3,15 @@ import { authenticated } from "core/http/middlewares";
 import * as model from "models/user";
 
 export default new Router({ prefix: "/users" })
+  // .post("/", validate(signUpRequest), async ctx => {
   .post("/", async ctx => {
     ctx.response.body = await model.signUp(ctx.request.body, ctx.db);
   })
-  // .post("/password-reset" async ctx => {
-  //   ctx.response.status = 202;
-  // })
+  .post("/password-reset", async ctx => {
+    // TODO: investigate, how to handle email prop validation
+    await model.makeResetToken(ctx.request.body.email, ctx.db);
+    ctx.response.status = 202;
+  })
   // .post("/password-reset/confirmation")
   .get("/", authenticated, async ctx => {
     ctx.response.body = await model.readById(ctx.session.userId, ctx.db);

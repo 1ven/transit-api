@@ -9,6 +9,7 @@ export const initServer = (routes, db) => {
 
   // TODO: get from env
   app.keys = ["my super secret"];
+  app.context.db = db;
 
   app.use(
     session(
@@ -25,8 +26,6 @@ export const initServer = (routes, db) => {
   app.use(middlewares.boom);
   app.use(bodyParser());
   app.use(routes);
-
-  app.context.db = db;
 
   app.listen(3000, () => {
     console.log("HTTP server is listening");
