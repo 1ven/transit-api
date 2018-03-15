@@ -9,6 +9,7 @@ export default async (email, db) => {
 
   if (!user) {
     throw Boom.notFound("User with given email is not found");
+    // throw EmailNotFound();
   }
 
   await db
@@ -26,3 +27,5 @@ export default async (email, db) => {
 
   return;
 };
+
+// export class EmailNotFound {}
