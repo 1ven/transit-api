@@ -3,6 +3,7 @@ import bodyParser from "koa-bodyparser";
 import session from "koa-session";
 import createSessionStore from "koa-session-knex-store";
 import * as middlewares from "./middlewares";
+import { validation } from "core/conceptions/models/middlewares";
 
 export const initServer = (routes, db) => {
   const app = new Koa();
@@ -24,6 +25,7 @@ export const initServer = (routes, db) => {
     )
   );
   app.use(middlewares.boom);
+  app.use(validation);
   app.use(bodyParser());
   app.use(routes);
 

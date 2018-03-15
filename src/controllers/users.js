@@ -3,7 +3,6 @@ import { authenticated } from "core/libraries/koa/middlewares";
 import * as model from "models/user";
 
 export default new Router({ prefix: "/users" })
-  // .post("/", validate(signUpRequest), async ctx => {
   .post("/", async ctx => {
     ctx.response.body = await model.signUp(ctx.request.body, ctx.db);
   })

@@ -1,30 +1,18 @@
 import bcrypt from "bcrypt";
-import Boom from "boom";
 import { pick } from "ramda";
 import * as yup from "yup";
-import * as validation from "core/conceptions/models/validation";
+import { validate } from "core/conceptions/models/validation";
 
 export default async (props, db) => {
-  try {
-    const { email, password } = await validation.validate(
-      props,
-      createSchema(db)
-    );
+  const { email, password } = await validate(props, createSchema(db));
 
-    const hash = await bcrypt.hash(password, 12);
-    const user = (await db
-      .insert({ email, hash })
-      .into("users")
-      .returning("*"))[0];
+  const hash = await bcrypt.hash(password, 12);
+  const user = (await db
+    .insert({ email, hash })
+    .into("users")
+    .returning("*"))[0];
 
-    return pick(["id", "email"], user);
-  } catch (err) {
-    // TODO: have validation middleware
-    if (err instanceof validation.ValidationError) {
-      throw Boom.badRequest(null, err.getFields());
-    }
-    throw err;
-  }
+  return pick(["id", "email"], user);
 };
 
 const checkEmailUniqueness = db => async email =>
