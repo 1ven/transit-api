@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import Boom from "boom";
-import * as yup from "yup";
 import { pick } from "ramda";
-import * as validation from "core/models/validation";
+import * as yup from "yup";
+import * as validation from "core/conceptions/models/validation";
 
 export default async (props, db) => {
   try {
@@ -19,6 +19,7 @@ export default async (props, db) => {
 
     return pick(["id", "email"], user);
   } catch (err) {
+    // TODO: have validation middleware
     if (err instanceof validation.ValidationError) {
       throw Boom.badRequest(null, err.getFields());
     }

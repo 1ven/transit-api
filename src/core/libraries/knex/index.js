@@ -1,5 +1,5 @@
 import knex from "knex";
-import knexfile from "../../../knexfile";
+import knexfile from "../../../../knexfile";
 
 // TODO: implement connection retrying
 export const connection = knex(knexfile);

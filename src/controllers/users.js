@@ -1,5 +1,5 @@
 import Router from "koa-router";
-import { authenticated } from "core/http/middlewares";
+import { authenticated } from "core/libraries/koa/middlewares";
 import * as model from "models/user";
 
 export default new Router({ prefix: "/users" })

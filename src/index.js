@@ -1,6 +1,6 @@
 import "babel-polyfill";
-import * as http from "core/http";
-import * as database from "core/database";
+import * as koa from "core/libraries/koa";
+import * as knex from "core/libraries/knex";
 import routes from "./controllers";
 
-const app = http.initServer(routes, database.connection);
+const app = koa.initServer(routes, knex.connection);

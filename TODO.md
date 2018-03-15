@@ -11,7 +11,7 @@
   <!-- - Investigate, how to connect to prod/stage DB locally via Docker -->
   <!-- - Run migrations after bootstrapping PG -->
 <!-- - Investigate how to pass arguments through make command -->
-- Investigate, why node service sometimes is running before postgres when running container first time and therefore throwing ECONNREFUSED 172.18.0.2:5432 error. Use "wait for it". https://docs.docker.com/compose/startup-order/
+- Investigate, why node service sometimes is running before postgres when running container first time and therefore throwing ECONNREFUSED 172.18.0.2:5432 error. Use "wait for it" in docker entrypoint before migrations. https://docs.docker.com/compose/startup-order/
 - Implement security recommendations from - https://expressjs.com/en/advanced/best-practice-security.html
   - Protect from XSS and other vulnerabilities
 <!-- - Implement authentication -->
@@ -21,7 +21,8 @@
   <!-- - Review koa-session library -->
 <!-- - Implement password resetting -->
   - Implement sending email
-- Move request body validations usage in controllers(middlewares). Define that code in models.
+- Implement validation interface in models. Keep all validation in models as well. Controllers should get all models validation messages and pass it to response for the cases when errors are coming from multiple models.
+  - Do not throw Booms in models?
 - Investigate, where to put model utils
 - Integrate Swagger
   - Define public models in definitions.yml and return those data from models functions.
@@ -32,6 +33,8 @@
   <!-- - Define errors structure as well -->
 <!-- - Implement model validations -->
 <!-- - Implement koa error handling -->
+
+- Implement Batch request
 
 Bugs:
 - Getting 500 error when don't providing content-type on sign in
