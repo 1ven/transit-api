@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import moment from "moment";
 import Boom from "boom";
 
-export default async ({ token, password }, db) => {
+export default async (token, password, db) => {
   /**
    * Removing token entry row, as we don't need to be able change a password twice.
    */

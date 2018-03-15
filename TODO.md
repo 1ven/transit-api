@@ -27,7 +27,7 @@
 - Integrate Swagger
   - Define public models in definitions.yml and return those data from models functions.
   - Use routes from swagger?
-- Refactor core
+<!-- - Refactor core -->
 
 - Define API response structure. Inherit from GitHub?
   <!-- - Define errors structure as well -->

@@ -12,7 +12,8 @@ export default new Router({ prefix: "/users" })
     ctx.response.status = 202;
   })
   .post("/password-reset/confirmation", async ctx => {
-    await model.resetPassword(ctx.request.body, ctx.db);
+    const { token, password } = ctx.request.body;
+    await model.resetPassword(token, password, ctx.db);
     ctx.response.status = 200;
     ctx.response.body = "Password has been changed successfully";
   })
