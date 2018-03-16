@@ -21,15 +21,17 @@
   <!-- - Review koa-session library -->
 <!-- - Implement password resetting -->
   - Implement sending email
-- Implement validation interface in models. Keep all validation in models as well. Controllers should get all models validation messages and pass it to response for the cases when errors are coming from multiple models.
+<!-- - Implement validation interface in models. Keep all validation in models as well. Controllers should get all models validation messages and pass it to response for the cases when errors are coming from multiple models. -->
   - Do not throw Booms in models?
-- Investigate, where to put model utils
-- Integrate Swagger
-  - Define public models in definitions.yml and return those data from models functions.
-  - Use routes from swagger?
+- Investigate, where to put model utils. Should be in `business` dir.
+  - Split model by dirs - `business`, `storage`, `service?`
+<!-- - Integrate Swagger -->
+- Add reexports to the model. Import directly non-default exporting elements
+- Integrate swagger-ui using webpack.
+  - Set up dev and prod envs
 <!-- - Refactor core -->
 
-- Define API response structure. Inherit from GitHub?
+<!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
 <!-- - Implement model validations -->
 <!-- - Implement koa error handling -->
