@@ -27,7 +27,7 @@
   - Split model by dirs - `business`, `storage`, `service?`
 <!-- - Integrate Swagger -->
 - Add reexports to the model. Import directly non-default exporting elements
-- Integrate swagger-ui using webpack.
+- Integrate swagger-ui using webpack. Implement `swagger-ui-static` app, using cra idea. Will accept path to swaggerfile via env
   - Set up dev and prod envs
 <!-- - Refactor core -->
 
