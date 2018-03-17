@@ -41,7 +41,18 @@ export const initServer = (routes, db) => {
       routePrefix: "/doc",
       hideTopbar: true,
       swaggerOptions: {
-        spec: swaggerSpec
+        spec: swaggerSpec,
+        plugins: [
+          () => ({
+            statePlugins: {
+              spec: {
+                wrapSelectors: {
+                  allowTryItOutFor: () => () => false
+                }
+              }
+            }
+          })
+        ]
       }
     })
   );
