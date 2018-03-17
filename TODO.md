@@ -26,9 +26,9 @@
 - Investigate, where to put model utils. Should be in `business` dir.
   - Split model by dirs - `business`, `storage`, `service?`
 <!-- - Integrate Swagger -->
-- Add reexports to the model. Import directly non-default exporting elements
-- Integrate swagger-ui using webpack. Implement `swagger-ui-static` app, using cra idea. Will accept path to swaggerfile via env
-  - Set up dev and prod envs
+<!-- - Add reexports to the model. Import directly non-default exporting elements -->
+<!-- - Integrate swagger-ui using webpack. Implement `swagger-ui-static` app, using cra idea. Will accept path to swaggerfile via env. have only `build` task, which will build that app to `/static` dir. Koa will be serving that dir
+  - take a look at koa2-swagger-ui -->
 <!-- - Refactor core -->
 
 <!-- - Define API response structure. Inherit from GitHub? -->
