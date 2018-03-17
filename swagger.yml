@@ -135,3 +135,6 @@ components:
           type: integer
         email:
           type: string
+      required:
+        - id
+        - email
