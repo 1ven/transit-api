@@ -10,6 +10,36 @@ servers:
     description: Staging api server.
 
 paths:
+  /auth/sign-in/local:
+    post:
+      tags:
+        - auth
+      summary: Logs user into the system via local authentication scheme.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: Success sign in.
+  /auth/sign-out:
+    post:
+      tags:
+        - auth
+      summary: Logs out the user.
+      responses:
+        '200':
+          description: Success sign out.
   /user:
     post:
       tags:
@@ -95,36 +125,6 @@ paths:
       responses:
         '200':
           description: Success password change.
-  /auth/sign-in/local:
-    post:
-      tags:
-        - auth
-      summary: Logs user into the system via local authentication scheme.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-                - email
-                - password
-      responses:
-        '200':
-          description: Success sign in.
-  /auth/sign-out:
-    post:
-      tags:
-        - auth
-      summary: Logs out the user.
-      responses:
-        '200':
-          description: Success sign out.
 
 components:
   schemas:
