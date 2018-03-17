@@ -4,10 +4,8 @@ info:
   version: 0.0.1
 
 servers:
-  - url: http://api.example.com/v1
-    description: Production api server.
-  - url: http://staging-api.example.com/v1
-    description: Staging api server.
+  - url: http://localhost:8080/api/v1
+    description: Local development server.
 
 paths:
   /auth/sign-in/local:
@@ -34,6 +32,8 @@ paths:
           description: Success sign in.
   /auth/sign-out:
     post:
+      security:
+        - cookieAuth: []
       tags:
         - auth
       summary: Logs out the user.
@@ -70,13 +70,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
     get:
+      security:
+        - cookieAuth: []
       tags:
         - user
       summary: Returns a current user.
       description: Optional extended description in CommonMark or HTML.
       responses:
         '200':
-          description: A JSON array of user names.
+          description: Current user object.
           content:
             application/json:
               schema:
