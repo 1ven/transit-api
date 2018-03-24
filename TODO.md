@@ -15,7 +15,7 @@
 - Implement security recommendations from - https://expressjs.com/en/advanced/best-practice-security.html
   - Protect from XSS and other vulnerabilities
 <!-- - Implement authentication -->
-  - Investigate, what it is Basic auth, Digest auth, do we need it instead of local auth?
+  <!-- - Investigate, what it is Basic auth, Digest auth, do we need it instead of local auth? -->
 <!-- - Use boom errors instead of modelErrrors -->
 <!-- - Implement sessions -->
   <!-- - Review koa-session library -->
@@ -23,8 +23,8 @@
   - Implement sending email
 <!-- - Implement validation interface in models. Keep all validation in models as well. Controllers should get all models validation messages and pass it to response for the cases when errors are coming from multiple models. -->
   - Do not throw Booms in models?
-- Investigate, where to put model utils. Should be in `business` dir.
-  - Split model by dirs - `business`, `storage`, `service?`
+  - Investigate, where to put model utils. Should be in `business` dir.
+    - Split model by dirs - `business`, `storage`, `service?`
 <!-- - Integrate Swagger -->
 <!-- - Add reexports to the model. Import directly non-default exporting elements -->
 <!-- - Integrate swagger-ui using webpack. Implement `swagger-ui-static` app, using cra idea. Will accept path to swaggerfile via env. have only `build` task, which will build that app to `/static` dir. Koa will be serving that dir
@@ -36,7 +36,13 @@
 <!-- - Implement model validations -->
 <!-- - Implement koa error handling -->
 
+- Implement run in Postman swagger ui integration
 - Implement Batch request
+
+- All responses should be in JSON format
+  - Generic error should be in { message: '' } format.
+  - Fields errrors should be in { fields: {} } format.
 
 Bugs:
 - Getting 500 error when don't providing content-type on sign in
+- Getting 500 error when password is invalid

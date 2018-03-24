@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Koa from "koa";
+import cors from "@koa/cors";
 import bodyParser from "koa-bodyparser";
 import session from "koa-session";
 import createSessionStore from "koa-session-knex-store";
@@ -34,6 +35,12 @@ export const initServer = (routes, db) => {
   app.use(middlewares.boom);
   app.use(validation);
   app.use(bodyParser());
+  app.use(
+    cors({
+      allowHeaders: ["Content-type", "Accept"],
+      credentials: true
+    })
+  );
   app.use(routes);
   app.use(
     koaSwagger({
