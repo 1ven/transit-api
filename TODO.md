@@ -30,6 +30,9 @@
 <!-- - Integrate swagger-ui using webpack. Implement `swagger-ui-static` app, using cra idea. Will accept path to swaggerfile via env. have only `build` task, which will build that app to `/static` dir. Koa will be serving that dir
   - take a look at koa2-swagger-ui -->
 <!-- - Refactor core -->
+- Investigate, how to create mock api, by swagger spec
+- Define request bodies for swagger spec
+- Split swagger file by features
 
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
@@ -46,3 +49,13 @@
 Bugs:
 - Getting 500 error when don't providing content-type on sign in
 - Getting 500 error when password is invalid
+
+
+
+<!-- - User roles database design -->
+<!-- - Availability database column -->
+<!-- - Product image database design -->
+<!-- - Coupon database best practices -->
+<!-- - Orders database best practices -->
+<!-- - Dynamic price database best practices -->
+<!-- - Database enums best practices -->

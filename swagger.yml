@@ -8,7 +8,7 @@ servers:
     description: Local development server.
 
 paths:
-  /auth/sign-in/local:
+  /auth/local/sign-in:
     post:
       tags:
         - auth
@@ -40,10 +40,54 @@ paths:
       responses:
         '200':
           description: Success sign out.
-  /user:
+  /credentials/reset:
     post:
       tags:
-        - user
+        - credentials
+      summary: Sends password reset confirmation link to user email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+                - email
+      responses:
+        '200':
+          description: Success email sending.
+  /credentials/change:
+    post:
+      tags:
+        - credentials
+      summary: Sets up a user password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                confirmation:
+                  type: string
+                token:
+                  type: string
+              required:
+                - password
+                - confirmation
+                - token
+      responses:
+        '200':
+          description: Success password change.
+  /users:
+    post:
+      tags:
+        - users
       summary: Signs up a user.
       requestBody:
         required: true
@@ -69,64 +113,273 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+  /self:
     get:
       security:
         - cookieAuth: []
       tags:
-        - user
+        - self
       summary: Returns a current user.
-      description: Optional extended description in CommonMark or HTML.
       responses:
         '200':
-          description: Current user object.
+          description: User object.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-  /user/password-reset:
+  /self/email/change:
     post:
+      security:
+        - cookieAuth: []
       tags:
-        - user
-      summary: Sends password reset confirmation link to user email.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-              required:
-                - email
+        - self
+      summary: Changes current user email.
       responses:
         '200':
-          description: Success email sending.
-  /user/password-reset/confirmation:
+          description: Success email change.
+  /self/email/confirm:
     post:
+      security:
+        - cookieAuth: []
       tags:
-        - user
-      summary: Sets up a user password.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                confirmation:
-                  type: string
-                token:
-                  type: string
-              required:
-                - password
-                - confirmation
-                - token
+        - self
+      summary: Confirms changed email.
       responses:
         '200':
-          description: Success password change.
+          description: Success email confirmation.
+  /customers:
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - customers
+      summary: Creates a new customer for a current user.
+      responses:
+        '200':
+          description: Customer object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '405':
+          description: Not allowed to create a customer.
+  /customers/{id}:
+    patch:
+      security:
+        - cookieAuth: []
+      tags:
+        - customers
+      summary: Updates specific customer data.
+      responses:
+        '200':
+          description: Customer object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '405':
+          description: Not allowed to update a customer.
+  /drivers:
+    get:
+      security:
+        - cookieAuth: []
+      tags:
+        - drivers
+      summary: Returns drivers list.
+      responses:
+        '200':
+          description: Drivers list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Driver'
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - drivers
+      summary: Creates a new driver for a current user.
+      responses:
+        '200':
+          description: Driver object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '405':
+          description: Not allowed to create a driver.
+  /drivers/{id}:
+    get:
+      security:
+        - cookieAuth: []
+      tags:
+        - drivers
+      summary: Returns specific driver data.
+      responses:
+        '200':
+          description: Driver object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+    patch:
+      security:
+        - cookieAuth: []
+      tags:
+        - drivers
+      summary: Updates specific driver data.
+      responses:
+        '200':
+          description: Driver object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '405':
+          description: Not allowed to update a driver.
+  /orders:
+    get:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Returns orders list.
+      responses:
+        '200':
+          description: Orders list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Creates an order.
+      responses:
+        '200':
+          description: Order created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '405':
+          description: Not allowed to create an order.
+  /orders/{id}:
+    get:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Returns a specific order.
+      responses:
+        '200':
+          description: Specific order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '405':
+          description: Not allowed to get an order.
+    patch:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Updates a specific order.
+      responses:
+        '200':
+          description: Specific order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '405':
+          description: Not allowed to update an order.
+    delete:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Deletes a specific order.
+      responses:
+        '204':
+          description: Deleted successfully.
+        '405':
+          description: Not allowed to delete an order.
+  /orders/{id}/pay:
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Pays for a specific order
+      responses:
+        '204':
+          description: Paid successfully.
+        '405':
+          description: Not allowed to pay for an order.
+  /orders/{id}/review:
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Reviews a specific order
+      responses:
+        '200':
+          description: Review.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderReview'
+        '405':
+          description: Not allowed to review an order.
+  /orders/{id}/start:
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Starts a specific order.
+      responses:
+        '204':
+          description: Order was started.
+        '405':
+          description: Not allowed to start an order.
+  /orders/{id}/finish:
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Finishes a specific order.
+      responses:
+        '204':
+          description: Order was finished.
+        '405':
+          description: Not allowed to finish an order.
+  /orders/{id}/messages:
+    post:
+      security:
+        - cookieAuth: []
+      tags:
+        - orders
+      summary: Creates a message in a specific order.
+      responses:
+        '200':
+          description: Created message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderMessage'
+        '405':
+          description: Not allowed to create a message in order.
 
 components:
   schemas:
@@ -137,6 +390,180 @@ components:
           type: integer
         email:
           type: string
+        role:
+          $ref: '#/components/schemas/Role'
+        role_entry_id:
+          type: integer
       required:
         - id
         - email
+        - role
+        - role_entry_id
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+      required:
+        - id
+        - first_name
+        - last_name
+    Driver:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        photo:
+          type: string
+        price:
+          type: integer
+        parcel_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParcelType'
+      required:
+        - id
+        - first_name
+        - last_name
+        - photo
+        - price
+        - parcel_types
+    ParcelType:
+      type: string
+      enum:
+        - small
+        - medium
+        - large
+    Address:
+      type: object
+      properties:
+        id:
+          type: integer
+        country:
+          type: string
+        region:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+      required:
+        - id
+        - country
+        - region
+        - city
+        - zip
+        - address_line_1
+        - address_line_2
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer:
+          $ref: '#/components/schemas/Customer'
+        driver:
+          $ref: '#/components/schemas/Driver'
+        source_address:
+          $ref: '#/components/schemas/Address'
+        destination_address:
+          $ref: '#/components/schemas/Address'
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        parcel_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParcelType'
+        review:
+          $ref: '#/components/schemas/OrderReview'
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderMessage'
+        total_price:
+          type: integer
+        earned_price:
+          type: integer
+        distance:
+          type: integer
+        start_date:
+          type: integer
+        finish_date:
+          type: integer
+        additional_info:
+          type: string
+        created_at:
+          type: integer
+      required:
+        - id
+        - customer
+        - driver
+        - source_address
+        - destination_address
+        - total_price
+        - earned_price
+        - distance
+        - parcel_types
+        - status
+        - created_at
+    OrderStatus:
+      type: string
+      enum:
+        - unpaid
+        - paid
+        - in_progress
+        - finished
+    OrderMessage:
+      type: object
+      properties:
+        id:
+          type: integer
+        role:
+          $ref: '#/components/schemas/Role'
+        text:
+          type: string
+        created_at:
+          type: integer
+      required:
+        - id
+        - role
+        - text
+        - created_at
+    OrderReview:
+      type: object
+      properties:
+        id:
+          type: integer
+        rating:
+          type: integer
+        text:
+          type: string
+        created_at:
+          type: integer
+      required:
+        - id
+        - rating
+        - text
+        - created_at
+    Role:
+      type: string
+      enum:
+        - driver
+        - customer
+
