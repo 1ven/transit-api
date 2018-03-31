@@ -1,0 +1,15 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - customers
+  summary: Creates a new customer for a current user.
+  responses:
+    '200':
+      description: Customer object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer'
+    '405':
+      description: Not allowed to create a customer.

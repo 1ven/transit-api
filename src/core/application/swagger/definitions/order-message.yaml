@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    type: integer
+  role:
+    $ref: '#/components/schemas/Role'
+  text:
+    type: string
+  created_at:
+    type: integer
+required:
+  - id
+  - role
+  - text
+  - created_at

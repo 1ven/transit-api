@@ -1,0 +1,30 @@
+get:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Returns orders list.
+  responses:
+    '200':
+      description: Orders list.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Creates an order.
+  responses:
+    '200':
+      description: Order created.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Order'
+    '405':
+      description: Not allowed to create an order.

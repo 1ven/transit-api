@@ -1,0 +1,41 @@
+get:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Returns a specific order.
+  responses:
+    '200':
+      description: Specific order.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Order'
+    '405':
+      description: Not allowed to get an order.
+patch:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Updates a specific order.
+  responses:
+    '200':
+      description: Specific order.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Order'
+    '405':
+      description: Not allowed to update an order.
+delete:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Deletes a specific order.
+  responses:
+    '204':
+      description: Deleted successfully.
+    '405':
+      description: Not allowed to delete an order.

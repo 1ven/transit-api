@@ -1,0 +1,9 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - self
+  summary: Confirms changed email.
+  responses:
+    '200':
+      description: Success email confirmation.

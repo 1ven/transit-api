@@ -1,0 +1,15 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Creates a message in a specific order.
+  responses:
+    '200':
+      description: Created message.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderMessage'
+    '405':
+      description: Not allowed to create a message in order.

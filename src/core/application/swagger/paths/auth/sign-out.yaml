@@ -1,0 +1,9 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - auth
+  summary: Logs out the user.
+  responses:
+    '200':
+      description: Success sign out.

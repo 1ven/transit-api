@@ -6,15 +6,12 @@ import bodyParser from "koa-bodyparser";
 import session from "koa-session";
 import createSessionStore from "koa-session-knex-store";
 import koaSwagger from "koa2-swagger-ui";
-import yaml from "yaml-js";
 import { validation } from "core/conceptions/models/middlewares";
+import * as swagger from "core/libraries/swagger";
 import * as middlewares from "./middlewares";
 
-export const initServer = (routes, db) => {
+export const initServer = async (routes, db) => {
   const app = new Koa();
-  const swaggerSpec = yaml.load(
-    fs.readFileSync(path.resolve(__dirname, "../../../../swagger.yml"))
-  );
 
   // TODO: get from env
   app.keys = ["my super secret"];
@@ -48,7 +45,7 @@ export const initServer = (routes, db) => {
       routePrefix: "/doc",
       hideTopbar: true,
       swaggerOptions: {
-        spec: swaggerSpec,
+        spec: await swagger.load(),
         plugins: [
           () => ({
             statePlugins: {

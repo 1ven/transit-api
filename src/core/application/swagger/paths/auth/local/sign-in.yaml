@@ -1,0 +1,21 @@
+post:
+  tags:
+    - auth
+  summary: Logs user into the system via local authentication scheme.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          required:
+            - email
+            - password
+  responses:
+    '200':
+      description: Success sign in.

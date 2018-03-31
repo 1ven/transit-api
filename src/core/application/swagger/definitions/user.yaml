@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    type: integer
+  email:
+    type: string
+  role:
+    $ref: '#/components/schemas/Role'
+  role_entry_id:
+    type: integer
+required:
+  - id
+  - email
+  - role
+  - role_entry_id

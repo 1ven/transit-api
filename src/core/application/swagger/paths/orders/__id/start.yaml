@@ -1,0 +1,11 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Starts a specific order.
+  responses:
+    '204':
+      description: Order was started.
+    '405':
+      description: Not allowed to start an order.

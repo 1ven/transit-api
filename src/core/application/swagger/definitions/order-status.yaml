@@ -1,0 +1,6 @@
+type: string
+enum:
+  - unpaid
+  - paid
+  - in_progress
+  - finished

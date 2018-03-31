@@ -1,0 +1,5 @@
+type: string
+enum:
+  - small
+  - medium
+  - large

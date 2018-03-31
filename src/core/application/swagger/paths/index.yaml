@@ -1,0 +1,38 @@
+/auth/local/sign-in:
+  $ref: ./auth/local/sign-in.yaml
+/auth/sign-out:
+  $ref: ./auth/sign-out.yaml
+/credentials/reset:
+  $ref: ./credentials/reset.yaml
+/credentials/change:
+  $ref: ./credentials/change.yaml
+/users:
+  $ref: ./users/index.yaml
+/self:
+  $ref: ./self/index.yaml
+/self/email/change:
+  $ref: ./self/email/change.yaml
+/self/email/confirm:
+  $ref: ./self/email/confirm.yaml
+/customers:
+  $ref: ./customers/index.yaml
+/customers/{id}:
+  $ref: ./customers/__id/index.yaml
+/drivers:
+  $ref: ./drivers/index.yaml
+/drivers/{id}:
+  $ref: ./drivers/__id/index.yaml
+/orders:
+  $ref: ./orders/index.yaml
+/orders/{id}:
+  $ref: ./orders/__id/index.yaml
+/orders/{id}/pay:
+  $ref: ./orders/__id/pay.yaml
+/orders/{id}/review:
+  $ref: ./orders/__id/review.yaml
+/orders/{id}/start:
+  $ref: ./orders/__id/start.yaml
+/orders/{id}/finish:
+  $ref: ./orders/__id/finish.yaml
+/orders/{id}/messages:
+  $ref: ./orders/__id/messages.yaml

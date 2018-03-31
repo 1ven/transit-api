@@ -1,0 +1,15 @@
+patch:
+  security:
+    - cookieAuth: []
+  tags:
+    - customers
+  summary: Updates specific customer data.
+  responses:
+    '200':
+      description: Customer object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer'
+    '405':
+      description: Not allowed to update a customer.

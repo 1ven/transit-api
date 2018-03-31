@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    type: integer
+  country:
+    type: string
+  region:
+    type: string
+  city:
+    type: string
+  zip:
+    type: string
+  address_line_1:
+    type: string
+  address_line_2:
+    type: string
+required:
+  - id
+  - country
+  - region
+  - city
+  - zip
+  - address_line_1
+  - address_line_2

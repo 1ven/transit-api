@@ -1,0 +1,30 @@
+get:
+  security:
+    - cookieAuth: []
+  tags:
+    - drivers
+  summary: Returns drivers list.
+  responses:
+    '200':
+      description: Drivers list.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Driver'
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - drivers
+  summary: Creates a new driver for a current user.
+  responses:
+    '200':
+      description: Driver object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Driver'
+    '405':
+      description: Not allowed to create a driver.

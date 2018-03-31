@@ -1,0 +1,28 @@
+get:
+  security:
+    - cookieAuth: []
+  tags:
+    - drivers
+  summary: Returns specific driver data.
+  responses:
+    '200':
+      description: Driver object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Driver'
+patch:
+  security:
+    - cookieAuth: []
+  tags:
+    - drivers
+  summary: Updates specific driver data.
+  responses:
+    '200':
+      description: Driver object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Driver'
+    '405':
+      description: Not allowed to update a driver.

@@ -1,0 +1,15 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Reviews a specific order
+  responses:
+    '200':
+      description: Review.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderReview'
+    '405':
+      description: Not allowed to review an order.

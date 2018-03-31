@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    type: integer
+  rating:
+    type: integer
+  text:
+    type: string
+  created_at:
+    type: integer
+required:
+  - id
+  - rating
+  - text
+  - created_at

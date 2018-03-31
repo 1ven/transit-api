@@ -1,0 +1,11 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Finishes a specific order.
+  responses:
+    '204':
+      description: Order was finished.
+    '405':
+      description: Not allowed to finish an order.

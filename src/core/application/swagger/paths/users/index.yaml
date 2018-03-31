@@ -1,0 +1,28 @@
+post:
+  tags:
+    - users
+  summary: Signs up a user.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+            confirmation:
+              type: string
+          required:
+            - email
+            - password
+            - confirmation
+  responses:
+    '200':
+      description: Success sign up.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'

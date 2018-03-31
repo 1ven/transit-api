@@ -1,0 +1,20 @@
+User:
+  $ref: ./user.yaml
+Customer:
+  $ref: ./customer.yaml
+Driver:
+  $ref: ./driver.yaml
+ParcelType:
+  $ref: ./parcel-type.yaml
+Address:
+  $ref: ./address.yaml
+Order:
+  $ref: ./order.yaml
+OrderStatus:
+  $ref: ./order-status.yaml
+OrderMessage:
+  $ref: ./order-message.yaml
+OrderReview:
+  $ref: ./order-review.yaml
+Role:
+  $ref: ./role.yaml

@@ -1,0 +1,9 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - self
+  summary: Changes current user email.
+  responses:
+    '200':
+      description: Success email change.

@@ -1,0 +1,13 @@
+get:
+  security:
+    - cookieAuth: []
+  tags:
+    - self
+  summary: Returns a current user.
+  responses:
+    '200':
+      description: User object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'

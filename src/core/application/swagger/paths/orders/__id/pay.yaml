@@ -1,0 +1,11 @@
+post:
+  security:
+    - cookieAuth: []
+  tags:
+    - orders
+  summary: Pays for a specific order
+  responses:
+    '204':
+      description: Paid successfully.
+    '405':
+      description: Not allowed to pay for an order.

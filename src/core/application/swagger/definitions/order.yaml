@@ -1,0 +1,50 @@
+type: object
+properties:
+  id:
+    type: integer
+  customer:
+    $ref: '#/components/schemas/Customer'
+  driver:
+    $ref: '#/components/schemas/Driver'
+  source_address:
+    $ref: '#/components/schemas/Address'
+  destination_address:
+    $ref: '#/components/schemas/Address'
+  status:
+    $ref: '#/components/schemas/OrderStatus'
+  parcel_types:
+    type: array
+    items:
+      $ref: '#/components/schemas/ParcelType'
+  review:
+    $ref: '#/components/schemas/OrderReview'
+  messages:
+    type: array
+    items:
+      $ref: '#/components/schemas/OrderMessage'
+  total_price:
+    type: integer
+  earned_price:
+    type: integer
+  distance:
+    type: integer
+  start_date:
+    type: integer
+  finish_date:
+    type: integer
+  additional_info:
+    type: string
+  created_at:
+    type: integer
+required:
+  - id
+  - customer
+  - driver
+  - source_address
+  - destination_address
+  - total_price
+  - earned_price
+  - distance
+  - parcel_types
+  - status
+  - created_at
