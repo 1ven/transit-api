@@ -13,3 +13,11 @@ paths:
 components:
   schemas:
     $ref: ./definitions/index.yaml
+  parameters:
+    entry_id:
+      in: path
+      name: id
+      schema:
+        type: integer
+      required: true
+      description: Entry ID.

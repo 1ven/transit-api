@@ -30,9 +30,9 @@
 <!-- - Integrate swagger-ui using webpack. Implement `swagger-ui-static` app, using cra idea. Will accept path to swaggerfile via env. have only `build` task, which will build that app to `/static` dir. Koa will be serving that dir
   - take a look at koa2-swagger-ui -->
 <!-- - Refactor core -->
-- Investigate, how to create mock api, by swagger spec
 - Define request bodies for swagger spec
 - Use swagger routes spec as a source of the truth
+- Investigate, how to create mock api, by swagger spec
 
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
