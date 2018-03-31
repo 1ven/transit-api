@@ -32,7 +32,7 @@
 <!-- - Refactor core -->
 - Investigate, how to create mock api, by swagger spec
 - Define request bodies for swagger spec
-- Split swagger file by features
+- Use swagger routes spec as a source of the truth
 
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
