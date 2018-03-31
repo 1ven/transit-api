@@ -6,6 +6,17 @@ post:
   tags:
     - orders
   summary: Reviews a specific order
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            text:
+              type: string
+          required:
+            - text
   responses:
     '200':
       description: Review.

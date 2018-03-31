@@ -19,6 +19,25 @@ patch:
   tags:
     - drivers
   summary: Updates specific driver data.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
+            photo:
+              type: string
+            price:
+              type: integer
+            parcel_types:
+              type: array
+              items:
+                $ref: '#/components/schemas/ParcelType'
   responses:
     '200':
       description: Driver object.

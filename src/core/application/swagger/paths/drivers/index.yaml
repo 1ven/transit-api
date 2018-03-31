@@ -19,6 +19,30 @@ post:
   tags:
     - drivers
   summary: Creates a new driver for a current user.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
+            photo:
+              type: string
+            price:
+              type: integer
+            parcel_types:
+              type: array
+              items:
+                $ref: '#/components/schemas/ParcelType'
+          required:
+            - first_name
+            - last_name
+            - price
+            - parcel_types
   responses:
     '200':
       description: Driver object.

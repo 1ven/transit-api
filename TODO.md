@@ -34,6 +34,8 @@
 - Use swagger routes spec as a source of the truth
 - Investigate, how to create mock api, by swagger spec
 
+- Define spec, API for payment management for drivers and customers
+
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
 <!-- - Implement model validations -->

@@ -19,6 +19,31 @@ post:
   tags:
     - orders
   summary: Creates an order.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            source_address:
+              $ref: '#/components/schemas/Address'
+            destination_address:
+              $ref: '#/components/schemas/Address'
+            parcel_type:
+              $ref: '#/components/schemas/ParcelType'
+            start_date:
+              type: integer
+            finish_date:
+              type: integer
+            additional_info:
+              type: string
+          required:
+            - source_address
+            - destination_address
+            - parcel_type
+            - start_date
+            - finish_date
   responses:
     '200':
       description: Order created.

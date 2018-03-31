@@ -12,10 +12,8 @@ properties:
     $ref: '#/components/schemas/Address'
   status:
     $ref: '#/components/schemas/OrderStatus'
-  parcel_types:
-    type: array
-    items:
-      $ref: '#/components/schemas/ParcelType'
+  parcel_type:
+    $ref: '#/components/schemas/ParcelType'
   review:
     $ref: '#/components/schemas/OrderReview'
   messages:

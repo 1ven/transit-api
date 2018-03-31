@@ -6,6 +6,17 @@ post:
   tags:
     - orders
   summary: Pays for a specific order
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            token:
+              type: string
+          required:
+            - token
   responses:
     '204':
       description: Paid successfully.

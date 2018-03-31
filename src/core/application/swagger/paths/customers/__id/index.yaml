@@ -6,6 +6,17 @@ patch:
   tags:
     - customers
   summary: Updates specific customer data.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
   responses:
     '200':
       description: Customer object.

@@ -4,6 +4,17 @@ post:
   tags:
     - self
   summary: Confirms changed email.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            token:
+              type: string
+          required:
+            - token
   responses:
     '200':
       description: Success email confirmation.

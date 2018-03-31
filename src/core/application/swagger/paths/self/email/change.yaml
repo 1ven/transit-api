@@ -4,6 +4,17 @@ post:
   tags:
     - self
   summary: Changes current user email.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+          required:
+            - email
   responses:
     '200':
-      description: Success email change.
+      description: Success email change request.
