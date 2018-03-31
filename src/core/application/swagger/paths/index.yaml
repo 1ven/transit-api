@@ -35,4 +35,4 @@
 /orders/{id}/finish:
   $ref: ./orders/__id/finish.yaml
 /orders/{id}/messages:
-  $ref: ./orders/__id/messages.yaml
+  $ref: ./orders/__id/messages/index.yaml
