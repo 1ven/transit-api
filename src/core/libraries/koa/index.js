@@ -41,8 +41,9 @@ export const initServer = async (routes, db) => {
   );
   app.use(routes);
   app.use(swaggerMiddlewares.documentation(swaggerSpec));
+  app.use(await swaggerMiddlewares.router(swaggerSpec));
 
-  app.listen(3000, () => {
+  app.listen(8080, () => {
     console.log("HTTP server is listening");
   });
 
