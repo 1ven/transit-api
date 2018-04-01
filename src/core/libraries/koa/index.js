@@ -5,13 +5,14 @@ import cors from "@koa/cors";
 import bodyParser from "koa-bodyparser";
 import session from "koa-session";
 import createSessionStore from "koa-session-knex-store";
-import koaSwagger from "koa2-swagger-ui";
 import { validation } from "core/conceptions/models/middlewares";
 import * as swagger from "core/libraries/swagger";
+import * as swaggerMiddlewares from "core/libraries/swagger/middlewares";
 import * as middlewares from "./middlewares";
 
 export const initServer = async (routes, db) => {
   const app = new Koa();
+  const swaggerSpec = await swagger.loadSpec();
 
   // TODO: get from env
   app.keys = ["my super secret"];
@@ -39,27 +40,7 @@ export const initServer = async (routes, db) => {
     })
   );
   app.use(routes);
-  app.use(
-    koaSwagger({
-      title: "API Documentation",
-      routePrefix: "/doc",
-      hideTopbar: true,
-      swaggerOptions: {
-        spec: await swagger.load(),
-        plugins: [
-          () => ({
-            statePlugins: {
-              spec: {
-                wrapSelectors: {
-                  allowTryItOutFor: () => () => false
-                }
-              }
-            }
-          })
-        ]
-      }
-    })
-  );
+  app.use(swaggerMiddlewares.documentation(swaggerSpec));
 
   app.listen(3000, () => {
     console.log("HTTP server is listening");
