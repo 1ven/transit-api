@@ -1,4 +1,6 @@
+x-swagger-router-controller: auth
 post:
+  operationId: signOut
   security:
     - cookieAuth: []
   tags:

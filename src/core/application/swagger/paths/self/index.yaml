@@ -1,4 +1,6 @@
+x-swagger-router-controller: self
 get:
+  operationId: getUserData
   security:
     - cookieAuth: []
   tags:

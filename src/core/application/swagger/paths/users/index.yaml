@@ -1,4 +1,6 @@
+x-swagger-router-controller: users
 post:
+  operationId: signUp
   tags:
     - users
   summary: Signs up a user.

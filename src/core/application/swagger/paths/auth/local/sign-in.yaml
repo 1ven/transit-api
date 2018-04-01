@@ -1,4 +1,6 @@
+x-swagger-router-controller: auth
 post:
+  operationId: localSignIn
   tags:
     - auth
   summary: Logs user into the system via local authentication scheme.
