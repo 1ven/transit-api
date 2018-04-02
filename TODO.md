@@ -31,17 +31,24 @@
   - take a look at koa2-swagger-ui -->
 <!-- - Refactor core -->
 <!-- - Define request bodies for swagger spec -->
-- Swagger
-  - Implement koa router based on swagger spec:
+<!-- - Swagger -->
+  <!-- - Implement koa router based on swagger spec:
     - Handle:
-      <!-- - paths -->
-      <!-- - methods -->
+      - paths
+      - methods
       - parameters, like path, query, headers etc. should we validate it?
     - Implement function for getting swagger spec from JSDOC.
       - Should keep function reference at every method path.
       - Should keep swagger root spec including json ref to the definitions in the controllers root file.
-    - Alternatively have js decorator functions instead of jsdoc anotations.
+    - Alternatively have js decorator functions instead of jsdoc anotations. -->
   - Investigate, how to create mock api, by swagger spec
+
+- Define api errors structure
+<!-- - All responses should be in JSON format -->
+  <!-- - Generic error should be in { message: '' } format. -->
+  <!-- - Fields errrors should be in { fields: {} } format. -->
+<!-- - Fix boom errors message / data handling -->
+<!-- - Merge boom and validation middlewares to error handling middlewares -->
 
 - Define spec, API for payment management for drivers and customers
 
@@ -53,14 +60,11 @@
 - Implement run in Postman swagger ui integration
 - Implement Batch request
 
-- All responses should be in JSON format
-  - Generic error should be in { message: '' } format.
-  - Fields errrors should be in { fields: {} } format.
-
 Bugs:
 - Getting 500 error when don't providing content-type on sign in
 - Getting 500 error when password is invalid
 
+- Implement integration tests
 
 
 <!-- - User roles database design -->
@@ -70,3 +74,7 @@ Bugs:
 <!-- - Orders database best practices -->
 <!-- - Dynamic price database best practices -->
 <!-- - Database enums best practices -->
+
+
+app design should be in green color with shadows
+admin design should with gradients and borders wihout shadows in github style

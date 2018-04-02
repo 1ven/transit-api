@@ -1,7 +1,9 @@
 import Router from "koa-router";
-import user from "./user";
 import auth from "./auth";
+import credentials from "./credentials";
+import self from "./self";
+import user from "./user";
 
 export default new Router({ prefix: "/v1" })
-  .use(user.routes(), auth.routes())
+  .use(auth.routes(), credentials.routes(), self.routes(), user.routes())
   .routes();

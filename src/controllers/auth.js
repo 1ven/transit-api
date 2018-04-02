@@ -2,7 +2,7 @@ import Router from "koa-router";
 import * as authentication from "models/user/authentication";
 
 export default new Router({ prefix: "/auth" })
-  .post("/sign-in/local", async ctx => {
+  .post("/local/sign-in", async ctx => {
     const user = await authentication.local(ctx.request.body, ctx.db);
 
     ctx.session.userId = user.id;
