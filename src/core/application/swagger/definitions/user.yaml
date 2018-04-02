@@ -12,4 +12,3 @@ required:
   - id
   - email
   - role
-  - role_entry_id

@@ -17,10 +17,13 @@ post:
               type: string
             confirmation:
               type: string
+            role:
+              $ref: '#/components/schemas/Role'
           required:
             - email
             - password
             - confirmation
+            - role
   responses:
     '200':
       description: Success sign up.
