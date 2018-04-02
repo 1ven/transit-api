@@ -43,13 +43,15 @@
     - Alternatively have js decorator functions instead of jsdoc anotations. -->
   - Investigate, how to create mock api, by swagger spec
 
-- Define api errors structure
+<!-- - Define api errors structure -->
 <!-- - All responses should be in JSON format -->
   <!-- - Generic error should be in { message: '' } format. -->
   <!-- - Fields errrors should be in { fields: {} } format. -->
 <!-- - Fix boom errors message / data handling -->
 <!-- - Merge boom and validation middlewares to error handling middlewares -->
 
+- Implement sign up for the drivers and customers.
+- Implement getting all drivers list.
 - Define spec, API for payment management for drivers and customers
 
 <!-- - Define API response structure. Inherit from GitHub? -->
