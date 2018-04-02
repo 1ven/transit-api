@@ -4,15 +4,15 @@ import * as yup from "yup";
 import { validate } from "core/conceptions/models/validation";
 
 export default async (props, db) => {
-  const { email, password } = await validate(props, createSchema(db));
+  const { role, email, password } = await validate(props, createSchema(db));
 
   const hash = await bcrypt.hash(password, 12);
   const user = (await db
-    .insert({ email, hash })
+    .insert({ role, email, hash })
     .into("users")
     .returning("*"))[0];
 
-  return pick(["id", "email"], user);
+  return pick(["id", "email", "role"], user);
 };
 
 const checkEmailUniqueness = db => async email =>
@@ -38,5 +38,9 @@ const createSchema = db =>
     confirmation: yup
       .string()
       .oneOf([yup.ref("password")], "Passwords are not matching")
-      .required("Password confirmation is required")
+      .required("Password confirmation is required"),
+    role: yup
+      .string()
+      .oneOf(["driver", "customer"], "Role should be either driver or customer")
+      .required()
   });
