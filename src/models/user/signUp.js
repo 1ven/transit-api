@@ -42,5 +42,5 @@ const createSchema = db =>
     role: yup
       .string()
       .oneOf(["driver", "customer"], "Role should be either driver or customer")
-      .required()
+      .required("Role is required")
   });
