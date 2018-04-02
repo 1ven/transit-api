@@ -31,11 +31,17 @@
   - take a look at koa2-swagger-ui -->
 <!-- - Refactor core -->
 <!-- - Define request bodies for swagger spec -->
-- Use swagger routes spec as a source of the truth
-  - paths
-  - methods
-  - parameters, like path, query, headers etc. should we validate it?
-- Investigate, how to create mock api, by swagger spec
+- Swagger
+  - Implement koa router based on swagger spec:
+    - Handle:
+      <!-- - paths -->
+      <!-- - methods -->
+      - parameters, like path, query, headers etc. should we validate it?
+    - Implement function for getting swagger spec from JSDOC.
+      - Should keep function reference at every method path.
+      - Should keep swagger root spec including json ref to the definitions in the controllers root file.
+    - Alternatively have js decorator functions instead of jsdoc anotations.
+  - Investigate, how to create mock api, by swagger spec
 
 - Define spec, API for payment management for drivers and customers
 
