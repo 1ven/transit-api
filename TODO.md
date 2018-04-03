@@ -51,11 +51,10 @@
 <!-- - Merge boom and validation middlewares to error handling middlewares -->
 
 - Implement sign up for the drivers and customers.
-  - Implement creating a customer(2nd step)
+  <!-- - Implement creating a customer(2nd step) -->
   - Implement creating a driver(2nd step)
   - Investigate how to handle customer state in self response(is_onboarded, etc)
-    - Should is_onboarded be in customer/driver or user response? As we have 2 different uncommon onboardings.
-    - Probably we don't need role_entry_id, have /self/customer or /self/driver instead
+    - Keep role_entry prop in user respones
 - Implement getting all drivers list.
 - Define spec, API for payment management for drivers and customers
 

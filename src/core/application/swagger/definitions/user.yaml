@@ -6,8 +6,10 @@ properties:
     type: string
   role:
     $ref: '#/components/schemas/Role'
-  role_entry_id:
-    type: integer
+  role_entry:
+    oneOf:
+      - $ref: '#/components/schemas/Driver'
+      - $ref: '#/components/schemas/Customer'
 required:
   - id
   - email
