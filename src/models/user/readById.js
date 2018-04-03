@@ -6,5 +6,5 @@ export default async (id, db) => {
     .from("users")
     .where({ id });
 
-  return pick(["id", "email"], user);
+  return pick(["id", "email", "role"], user);
 };
