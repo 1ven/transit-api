@@ -9,7 +9,7 @@ export default async (props, userId, db) => {
   const { role } = await user.readById(userId, db);
 
   if (role !== "customer") {
-    throw Boom.forbidden("User should have customer role");
+    throw Boom.forbidden("User should have a customer role");
   }
 
   if (await readByUserId(userId, db)) {
