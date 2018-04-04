@@ -55,8 +55,30 @@
   - Implement creating a driver(2nd step)
   - Investigate how to handle customer state in self response(is_onboarded, etc)
     - Keep role_entry prop in user respones
+    - Keep `is_onboarded` in `role_entry` literally in either Driver or Customer model
 - Implement getting all drivers list.
 - Define spec, API for payment management for drivers and customers
+
+- Do not use `readById` for the cases, when we need just one prop
+  - Like when we need role, create a separate function for select('role')
+  - Like `readByEmail` for `makeResetToken`(but not for local sign in), should be `isUserExists` instead
+
+- Model functions, which are responsible for fetching data for controllers, should reuse knex builders
+if they need to use joins
+  - `readById` and `readByEmail` should have common knex builder
+
+- Consider creating a new dirs only when they will store the files of a different conception/purpose
+  - For example, refactor user model to be:
+  ```
+    - user
+      - authentication
+      - entry
+        - definitions
+        - builders
+        create.js
+        readById.js
+        readByEmail.js
+  ```
 
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
