@@ -80,6 +80,8 @@ if they need to use joins
         readByEmail.js
   ```
 
+- Ensure that database satisfies 3 types of data integrities
+
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
 <!-- - Implement model validations -->
