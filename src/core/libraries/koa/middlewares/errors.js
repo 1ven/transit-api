@@ -28,9 +28,10 @@ export default async (ctx, next) => {
      */
     if (err instanceof validation.ValidationError) {
       ctx.response.body = {
+        message: "Validation failed",
         ...fields(err.getFields())
       };
-      ctx.response.status = 400;
+      ctx.response.status = 422;
       return;
     }
 
