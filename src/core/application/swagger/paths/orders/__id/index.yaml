@@ -1,6 +1,7 @@
 parameters:
   - $ref: '#/components/parameters/entry_id'
 get:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:
@@ -16,6 +17,7 @@ get:
     '405':
       description: Not allowed to get an order.
 patch:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:
@@ -50,6 +52,7 @@ patch:
     '405':
       description: Not allowed to update an order.
 delete:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:

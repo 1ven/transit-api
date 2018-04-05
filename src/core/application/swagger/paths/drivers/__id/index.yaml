@@ -1,6 +1,7 @@
 parameters:
   - $ref: '#/components/parameters/entry_id'
 get:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:
@@ -14,6 +15,7 @@ get:
           schema:
             $ref: '#/components/schemas/Driver'
 patch:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:

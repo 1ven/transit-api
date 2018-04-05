@@ -50,13 +50,13 @@
 <!-- - Fix boom errors message / data handling -->
 <!-- - Merge boom and validation middlewares to error handling middlewares -->
 
-- Implement sign up for the drivers and customers.
+<!-- - Implement sign up for the drivers and customers. -->
   <!-- - Implement creating a customer(2nd step) -->
   <!-- - Implement creating a driver(2nd step) -->
-  - Investigate how to handle customer state in self response(is_onboarded, etc)
+  <!-- - Investigate how to handle customer state in self response(is_onboarded, etc)
     - Keep role_entry prop in user respones
     - Keep `is_onboarded` in `role_entry` literally in either Driver or Customer model
-    - Should not keep `is_onboarded` in db, that prop should be computable.
+    - Should not keep `is_onboarded` in db, that prop should be computable. -->
 - Implement getting all drivers list.
 - Define spec, API for payment management for drivers and customers
 

@@ -1,4 +1,5 @@
 get:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:
@@ -14,6 +15,7 @@ get:
             items:
               $ref: '#/components/schemas/Order'
 post:
+  deprecated: true
   security:
     - cookieAuth: []
   tags:
