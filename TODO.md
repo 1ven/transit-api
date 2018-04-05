@@ -52,10 +52,11 @@
 
 - Implement sign up for the drivers and customers.
   <!-- - Implement creating a customer(2nd step) -->
-  - Implement creating a driver(2nd step)
+  <!-- - Implement creating a driver(2nd step) -->
   - Investigate how to handle customer state in self response(is_onboarded, etc)
     - Keep role_entry prop in user respones
     - Keep `is_onboarded` in `role_entry` literally in either Driver or Customer model
+    - Should not keep `is_onboarded` in db, that prop should be computable.
 - Implement getting all drivers list.
 - Define spec, API for payment management for drivers and customers
 
@@ -82,6 +83,8 @@ if they need to use joins
 
 - Ensure that database satisfies 3 types of data integrities
 
+- Implement ability for the driver to rate the customer
+
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->
 <!-- - Implement model validations -->
@@ -89,6 +92,7 @@ if they need to use joins
 
 - Implement run in Postman swagger ui integration
 - Implement Batch request
+- Use semver for every release
 
 Bugs:
 - Getting 500 error when don't providing content-type on sign in

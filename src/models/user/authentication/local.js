@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import Boom from "boom";
-import readByEmail from "../readByEmail";
+import readById from "../readById";
 
 export default async ({ email, password }, db) => {
   // TODO: implement validation?
@@ -14,5 +14,5 @@ export default async ({ email, password }, db) => {
     throw Boom.unauthorized("Sorry! Your email or password is invalid");
   }
 
-  return await readByEmail(email, db);
+  return await readById(user.id, db);
 };
