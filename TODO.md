@@ -57,6 +57,9 @@
     - Keep role_entry prop in user respones
     - Keep `is_onboarded` in `role_entry` literally in either Driver or Customer model
     - Should not keep `is_onboarded` in db, that prop should be computable. -->
+
+- Investigate, how to deal with relational data in lists
+
 - Implement getting all drivers list.
 - Define spec, API for payment management for drivers and customers
 
@@ -93,6 +96,7 @@ if they need to use joins
 - Implement run in Postman swagger ui integration
 - Implement Batch request
 - Use semver for every release
+- Use camelcase interface for the api
 
 Bugs:
 - Getting 500 error when don't providing content-type on sign in
