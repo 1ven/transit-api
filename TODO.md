@@ -58,9 +58,9 @@
     - Keep `is_onboarded` in `role_entry` literally in either Driver or Customer model
     - Should not keep `is_onboarded` in db, that prop should be computable. -->
 
-- Investigate, how to deal with relational data in lists
+<!-- - Investigate, how to deal with relational data in lists -->
 
-- Implement getting all drivers list.
+<!-- - Implement getting all drivers list. -->
 - Define spec, API for payment management for drivers and customers
 
 - Do not use `readById` for the cases, when we need just one prop
@@ -85,8 +85,6 @@ if they need to use joins
   ```
 
 - Ensure that database satisfies 3 types of data integrities
-
-- Implement ability for the driver to rate the customer
 
 <!-- - Define API response structure. Inherit from GitHub? -->
   <!-- - Define errors structure as well -->

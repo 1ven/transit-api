@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { append, over, or, lensPath, compose } from "ramda";
+import { assocPath } from "ramda";
 
 export class ValidationError {
   constructor(errors) {
@@ -8,12 +8,7 @@ export class ValidationError {
 
   getFields() {
     return this.errors.reduce(
-      (acc, error) =>
-        over(
-          lensPath(error.path.split(".")),
-          compose(append(error.message), or([])),
-          acc
-        ),
+      (acc, item) => assocPath(item.path.split("."), item.message, acc),
       {}
     );
   }
