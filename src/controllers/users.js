@@ -4,5 +4,7 @@ import { message } from "core/conceptions/http";
 import * as model from "models/user";
 
 export default new Router({ prefix: "/users" }).post("/", async ctx => {
-  ctx.response.body = await model.signUp(ctx.request.body, ctx.db);
+  const user = await model.signUp(ctx.request.body, ctx.db);
+  ctx.session.userId = user.id;
+  ctx.response.body = user;
 });
