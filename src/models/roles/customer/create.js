@@ -2,10 +2,9 @@ import Boom from "boom";
 import * as yup from "yup";
 import * as userModel from "models/account/user";
 import { pick } from "ramda";
-import { validate } from "core/conceptions/models/validation";
 import readByUserId from "./readByUserId";
 
-export default async (props, userId, db) => {
+export default async ({ first_name, last_name }, userId, db) => {
   const { role } = await userModel.readById(userId, db);
 
   if (role !== "customer") {
@@ -16,8 +15,6 @@ export default async (props, userId, db) => {
     throw Boom.conflict("User is already having a customer");
   }
 
-  const { first_name, last_name } = await validate(props, createSchema(db));
-
   const customer = (await db
     .insert({ first_name, last_name, user_id: userId })
     .into("customers")
@@ -25,9 +22,3 @@ export default async (props, userId, db) => {
 
   return pick(["id", "first_name", "last_name"], customer);
 };
-
-const createSchema = db =>
-  yup.object().shape({
-    first_name: yup.string().required("First name is required"),
-    last_name: yup.string().required("Last name is required")
-  });

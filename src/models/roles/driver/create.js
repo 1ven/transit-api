@@ -1,11 +1,13 @@
 import Boom from "boom";
-import * as yup from "yup";
 import * as userModel from "models/account/user";
-import { prop, pick, difference } from "ramda";
-import { validate } from "core/conceptions/models/validation";
+import { prop, pick } from "ramda";
 import readByUserId from "./readByUserId";
 
-export default async (props, userId, db) => {
+export default async (
+  { first_name, last_name, photo, price, parcel_types },
+  userId,
+  db
+) => {
   const { role } = await userModel.readById(userId, db);
 
   if (role !== "driver") {
@@ -15,11 +17,6 @@ export default async (props, userId, db) => {
   if (await readByUserId(userId, db)) {
     throw Boom.conflict("User is already having a driver");
   }
-
-  const { first_name, last_name, photo, price, parcel_types } = await validate(
-    props,
-    createSchema(db)
-  );
 
   const driver = (await db
     .insert({ first_name, last_name, photo, price, user_id: userId })
@@ -36,20 +33,3 @@ export default async (props, userId, db) => {
     parcel_types: parcelTypes.map(prop("parcel_type"))
   };
 };
-
-const createSchema = db =>
-  yup.object().shape({
-    first_name: yup.string().required("First name is required"),
-    last_name: yup.string().required("Last name is required"),
-    price: yup.number().required("Price is required"),
-    parcel_types: yup
-      .array()
-      .test(
-        "is-parcel-types",
-        'Parcel types should contain these values - "small", "medium", "large"',
-        async arr =>
-          arr && difference(arr, ["small", "medium", "large"]).length === 0
-      )
-      .required("Parcel types is required"),
-    photo: yup.string()
-  });
