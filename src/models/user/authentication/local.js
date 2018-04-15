@@ -11,7 +11,7 @@ export default async ({ email, password }, db) => {
     .where({ email });
 
   if (!user || !await bcrypt.compare(password, user.hash)) {
-    throw Boom.unauthorized("Sorry! Your email or password is invalid");
+    throw Boom.badRequest("Sorry! Your email or password is invalid");
   }
 
   return await readById(user.id, db);
