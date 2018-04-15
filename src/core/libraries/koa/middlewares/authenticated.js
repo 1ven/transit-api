@@ -3,7 +3,7 @@ import { isEmpty } from "ramda";
 
 export default async (ctx, next) => {
   if (!ctx.session || !ctx.session.userId) {
-    throw Boom.forbidden();
+    throw Boom.unauthorized();
   }
 
   await next();
