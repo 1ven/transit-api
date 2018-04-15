@@ -1,11 +1,11 @@
 import uuid from "uuid/v4";
 import Boom from "boom";
 import moment from "moment";
-import readByEmail from "./readByEmail";
+import * as userModel from "models/account/user";
 
 export default async (email, db) => {
   const token = uuid();
-  const user = await readByEmail(email, db);
+  const user = await userModel.readByEmail(email, db);
 
   if (!user) {
     throw Boom.notFound("User with given email is not found");

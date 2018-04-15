@@ -1,18 +1,15 @@
 import bcrypt from "bcrypt";
 import Boom from "boom";
-import readById from "../readById";
+import * as userModel from "models/account/user";
 
 export default async ({ email, password }, db) => {
   // TODO: implement validation?
 
-  const user = await db
-    .first("*")
-    .from("users")
-    .where({ email });
+  const info = await userModel.exposeByEmail(email, db);
 
-  if (!user || !await bcrypt.compare(password, user.hash)) {
+  if (!info || !await bcrypt.compare(password, info.hash)) {
     throw Boom.badRequest("Sorry! Your email or password is invalid");
   }
 
-  return await readById(user.id, db);
+  return await userModel.readById(info.id, db);
 };

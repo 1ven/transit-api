@@ -1,12 +1,12 @@
 import Router from "koa-router";
 import { authenticated } from "core/libraries/koa/middlewares";
 import { message } from "core/conceptions/http";
-import * as model from "models/user";
+import * as userModel from "models/account/user";
 
 export default new Router({ prefix: "/self" }).get(
   "/",
   authenticated,
   async ctx => {
-    ctx.response.body = await model.readById(ctx.session.userId, ctx.db);
+    ctx.response.body = await userModel.readById(ctx.session.userId, ctx.db);
   }
 );

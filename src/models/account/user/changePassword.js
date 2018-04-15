@@ -1,16 +1,13 @@
 import bcrypt from "bcrypt";
 import moment from "moment";
 import Boom from "boom";
+import * as resetTokenModel from "models/account/reset-token";
 
 export default async (token, password, db) => {
   /**
    * Removing token entry row, as we don't need to be able change a password twice.
    */
-  const entry = (await db
-    .delete()
-    .from("password_reset_tokens")
-    .where({ token })
-    .returning("*"))[0];
+  const entry = resetTokenModel.removeToken(token, db);
 
   if (!entry || isTokenExpired(entry)) {
     throw Boom.badRequest("Invalid token");
