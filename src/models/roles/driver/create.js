@@ -1,6 +1,7 @@
 import Boom from "boom";
-import * as userModel from "models/account/user";
 import { prop, pick } from "ramda";
+import { errors } from "core/conceptions/model";
+import * as userModel from "models/account/user";
 import readByUserId from "./readByUserId";
 
 export default async (
@@ -11,11 +12,11 @@ export default async (
   const { role } = await userModel.readById(userId, db);
 
   if (role !== "driver") {
-    throw Boom.forbidden("User should have a driver role");
+    throw new errors.NotAllowedError("User should have a driver role");
   }
 
   if (await readByUserId(userId, db)) {
-    throw Boom.conflict("User is already having a driver");
+    throw new errors.ConflictError("User is already having a driver");
   }
 
   const driver = (await db

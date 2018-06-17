@@ -1,6 +1,5 @@
 import Router from "koa-router";
 import { authenticated } from "core/libraries/koa/middlewares";
-import { message } from "core/conceptions/http";
 import * as userModel from "models/account/user";
 
 export default new Router({ prefix: "/self" }).get(

@@ -1,6 +1,7 @@
 import uuid from "uuid/v4";
 import Boom from "boom";
 import moment from "moment";
+import { errors } from "core/conceptions/model";
 import * as userModel from "models/account/user";
 
 export default async (email, db) => {
@@ -8,7 +9,7 @@ export default async (email, db) => {
   const user = await userModel.readByEmail(email, db);
 
   if (!user) {
-    throw Boom.notFound("User with given email is not found");
+    throw new errors.NotFoundError("User with given email is not found");
     // throw EmailNotFound();
   }
 

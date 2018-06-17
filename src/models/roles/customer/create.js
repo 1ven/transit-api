@@ -1,18 +1,19 @@
 import Boom from "boom";
 import * as yup from "yup";
-import * as userModel from "models/account/user";
 import { pick } from "ramda";
+import { errors } from "core/conceptions/model";
+import * as userModel from "models/account/user";
 import readByUserId from "./readByUserId";
 
 export default async ({ first_name, last_name }, userId, db) => {
   const { role } = await userModel.readById(userId, db);
 
   if (role !== "customer") {
-    throw Boom.forbidden("User should have a customer role");
+    throw new errors.NotAllowedError("User should have a customer role");
   }
 
   if (await readByUserId(userId, db)) {
-    throw Boom.conflict("User is already having a customer");
+    throw new errors.ConflictError("User is already having a customer");
   }
 
   const customer = (await db

@@ -22,6 +22,10 @@ export default async (ctx, next) => {
       return;
     }
 
+    /**
+     * Model error handling
+     */
+
     throw err;
   }
 };

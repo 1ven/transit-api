@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import moment from "moment";
 import Boom from "boom";
+import { errors } from "core/conceptions/model";
 import * as resetTokenModel from "models/account/reset-token";
 
 export default async (token, password, db) => {
@@ -10,7 +11,7 @@ export default async (token, password, db) => {
   const entry = resetTokenModel.removeToken(token, db);
 
   if (!entry || isTokenExpired(entry)) {
-    throw Boom.badRequest("Invalid token");
+    throw new errors.ClientError("Invalid token");
   }
 
   return await db
